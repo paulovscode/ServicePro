@@ -1,0 +1,20 @@
+### Base URL
+@baseUrl = http://localhost:8082
+
+### 1. CADASTRAR COM SENHA (vai ser hasheada)
+POST {{baseUrl}}/api/prestadores/cadastrar
+Content-Type: application/json
+
+{
+    "nomeCompleto": "Teste Senha Hash",
+    "cpfCnpj": "999.888.777-66",
+    "email": "teste.hash@email.com",
+    "telefone": "(11) 93333-3333",
+    "senha": "minhaSenhaSecreta123"
+}
+
+### 2. TENTAR LOGIN COM SENHA CORRETA
+POST {{baseUrl}}/api/prestadores/login?email=teste.hash@email.com&senha=minhaSenhaSecreta123
+
+### 3. TENTAR LOGIN COM SENHA ERRADA
+POST {{baseUrl}}/api/prestadores/login?email=teste.hash@email.com&senha=senhaErrada

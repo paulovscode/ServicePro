@@ -1,0 +1,13 @@
+# 1. Faça login (use email que já cadastrou):
+curl -X POST http://localhost:8082/api/auth/login \
+-H "Content-Type: application/json" \
+-d '{
+    "emailOuTelefone": "joao@email.com",
+    "senha": "senha123"
+}'
+# A resposta terá um token JWT como:
+# {"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."}
+
+# Copie o token da resposta anterior:
+curl -X GET http://localhost:8082/api/prestadores \
+-H "Authorization: Bearer SEU_TOKEN_AQUI"

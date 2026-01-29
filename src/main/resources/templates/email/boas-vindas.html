@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Bem-vindo ao ServicePro</title>
+</head>
+<body>
+    <h1>Bem-vindo ao ServicePro, <span th:text="${nome}">Usuário</span>!</h1>
+    <p>Sua conta foi criada com sucesso.</p>
+    <p>Acesse nosso sistema: <a th:href="${appUrl}">ServicePro</a></p>
+</body>
+</html>

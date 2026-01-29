@@ -1,0 +1,213 @@
+Listagem de caminhos de pasta
+O n£mero de s‚rie do volume ‚ 76A9-5F56
+C:.
+|   .gitattributes
+|   .gitignore
+|   comprovante.pdf
+|   fix-project.bat
+|   HELP.md
+|   mvnw
+|   mvnw.cmd
+|   nulmvnw.cmd
+|   pom.xml
+|   structure.txt
+|   
++---.github
+|   \---appmod
+|       \---appcat
++---.mvn
+|   \---wrapper
+|           maven-wrapper.properties
+|           
++---src
+|   +---main
+|   |   +---java
+|   |   |   \---com
+|   |   |       \---servicepro
+|   |   |           \---backend
+|   |   |               |   BackendApplication.java
+|   |   |               |   BackendController.java
+|   |   |               |   GlobalExceptionHandler.java
+|   |   |               |   
+|   |   |               +---config
+|   |   |               |       SecurityConfig.java
+|   |   |               |       
+|   |   |               +---controller
+|   |   |               |       AuthController.java
+|   |   |               |       DashboardController.java
+|   |   |               |       PrestadorController.java
+|   |   |               |       RecuperacaoSenhaController.java
+|   |   |               |       ServicoController.java
+|   |   |               |       
+|   |   |               +---dto
+|   |   |               |   +---request
+|   |   |               |   |       LoginRequest.java
+|   |   |               |   |       PrestadorRequest.java
+|   |   |               |   |       RecuperacaoSenhaRequest.java
+|   |   |               |   |       ResetSenhaRequest.java
+|   |   |               |   |       ServicoRequest.java
+|   |   |               |   |       
+|   |   |               |   \---response
+|   |   |               |           ApiResponse.java
+|   |   |               |           AuthResponse.java
+|   |   |               |           DashboardResponse.java
+|   |   |               |           PrestadorResponse.java
+|   |   |               |           ServicoResponse.java
+|   |   |               |           
+|   |   |               +---exception
+|   |   |               |       ResourceNotFoundException.java
+|   |   |               |       
+|   |   |               +---model
+|   |   |               |       Prestador.java
+|   |   |               |       Servico.java
+|   |   |               |       TokenRecuperacao.java
+|   |   |               |       
+|   |   |               +---repository
+|   |   |               |       PrestadorRepository.java
+|   |   |               |       ServicoRepository.java
+|   |   |               |       TokenRecuperacaoRepository.java
+|   |   |               |       
+|   |   |               +---security
+|   |   |               |       ApplicationUserDetailsService.java
+|   |   |               |       JwtAuthenticationFilter.java
+|   |   |               |       JwtService.java
+|   |   |               |       
+|   |   |               +---service
+|   |   |               |       AuthService.java
+|   |   |               |       DashboardService.java
+|   |   |               |       EmailService.java
+|   |   |               |       PdfService.java
+|   |   |               |       PrestadorService.java
+|   |   |               |       RecuperacaoSenhaService.java
+|   |   |               |       ServicoService.java
+|   |   |               |       
+|   |   |               \---util
+|   |   |                       DateUtils.java
+|   |   |                       Validators.java
+|   |   |                       
+|   |   \---resources
+|   |       |   application.properties
+|   |       |   
+|   |       +---static
+|   |       \---templates
+|   |           \---email
+|   |                   boas-vindas.html
+|   |                   recuperacao-senha.html
+|   |                   
+|   \---test
+|       +---http
+|       |       dashboard.http
+|       |       prestadores-test.http
+|       |       test-senhas.http
+|       |       teste-final-api.http
+|       |       teste-pdf.http
+|       |       teste-sequencial.http
+|       |       teste-status.http
+|       |       teste.http
+|       |       teste2.http
+|       |       teste3.http
+|       |       
+|       \---java
+|           \---com
+|               \---servicepro
+|                   \---backend
+|                           BackendApplicationTests.java
+|                           
+\---target
+    +---classes
+    |   |   application.properties
+    |   |   
+    |   +---com
+    |   |   \---servicepro
+    |   |       \---backend
+    |   |           |   BackendApplication.class
+    |   |           |   BackendController.class
+    |   |           |   GlobalExceptionHandler.class
+    |   |           |   
+    |   |           +---config
+    |   |           |       SecurityConfig.class
+    |   |           |       
+    |   |           +---controller
+    |   |           |       AuthController.class
+    |   |           |       DashboardController.class
+    |   |           |       PrestadorController.class
+    |   |           |       RecuperacaoSenhaController.class
+    |   |           |       ServicoController.class
+    |   |           |       
+    |   |           +---dto
+    |   |           |   +---request
+    |   |           |   |       LoginRequest.class
+    |   |           |   |       PrestadorRequest.class
+    |   |           |   |       RecuperacaoSenhaRequest.class
+    |   |           |   |       ResetSenhaRequest.class
+    |   |           |   |       ServicoRequest.class
+    |   |           |   |       
+    |   |           |   \---response
+    |   |           |           ApiResponse$ApiResponseBuilder.class
+    |   |           |           ApiResponse.class
+    |   |           |           AuthResponse$AuthResponseBuilder.class
+    |   |           |           AuthResponse.class
+    |   |           |           DashboardResponse.class
+    |   |           |           PrestadorResponse.class
+    |   |           |           ServicoResponse.class
+    |   |           |           
+    |   |           +---exception
+    |   |           |       ResourceNotFoundException.class
+    |   |           |       
+    |   |           +---model
+    |   |           |       Prestador.class
+    |   |           |       Servico$StatusServico.class
+    |   |           |       Servico.class
+    |   |           |       TokenRecuperacao.class
+    |   |           |       
+    |   |           +---repository
+    |   |           |       PrestadorRepository.class
+    |   |           |       ServicoRepository.class
+    |   |           |       TokenRecuperacaoRepository.class
+    |   |           |       
+    |   |           +---security
+    |   |           |       ApplicationUserDetailsService.class
+    |   |           |       JwtAuthenticationFilter.class
+    |   |           |       JwtService.class
+    |   |           |       
+    |   |           +---service
+    |   |           |       AuthService.class
+    |   |           |       DashboardService.class
+    |   |           |       EmailService.class
+    |   |           |       PdfService$PdfPageEvent.class
+    |   |           |       PdfService.class
+    |   |           |       PrestadorService.class
+    |   |           |       RecuperacaoSenhaService.class
+    |   |           |       ServicoService.class
+    |   |           |       
+    |   |           \---util
+    |   |                   DateUtils.class
+    |   |                   Validators.class
+    |   |                   
+    |   \---templates
+    |       \---email
+    |               boas-vindas.html
+    |               recuperacao-senha.html
+    |               
+    +---generated-sources
+    |   \---annotations
+    +---generated-test-sources
+    |   \---test-annotations
+    +---maven-status
+    |   \---maven-compiler-plugin
+    |       +---compile
+    |       |   \---default-compile
+    |       |           createdFiles.lst
+    |       |           inputFiles.lst
+    |       |           
+    |       \---testCompile
+    |           \---default-testCompile
+    |                   createdFiles.lst
+    |                   inputFiles.lst
+    |                   
+    \---test-classes
+        \---com
+            \---servicepro
+                \---backend
+                        BackendApplicationTests.class
+                        

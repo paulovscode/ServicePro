@@ -1,0 +1,98 @@
+@baseUrl = http://localhost:8082
+@email = teste@api.com
+@senha = 123456
+
+### 1. TESTE DE SAÚDE
+GET {{baseUrl}}/status
+
+### 2. CADASTRAR PRESTADOR
+# @name cadastro
+POST {{baseUrl}}/api/auth/registrar
+Content-Type: application/json
+
+{
+  "nomeCompleto": "Carlos Almeida",
+  "email": "carlao@email.com",
+  "senha": "senha190",
+  "telefone": "(11) 80999-9999",
+  "cpfCnpj": "123.466.786-09"
+}
+
+### 3. LOGIN E PEGAR TOKEN
+# @name login
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+  "emailOuTelefone": "carlao@email.com",
+  "senha": "senha190"
+}
+
+### 4. SALVAR TOKEN
+@token = eyJhbGciOiJIUzI1NiJ9.eyJub21lIjoiQ2FybG9zIEFsbWVpZGEiLCJpZCI6MTksImVtYWlsIjoiY2FybGFvQGVtYWlsLmNvbSIsInN1YiI6ImNhcmxhb0BlbWFpbC5jb20iLCJpYXQiOjE3Njk1Mjk5NDQsImV4cCI6MTc2OTYxNjM0NH0.Tj0zc5BGBDezp2F4Vsl7cwADKcBm0838Wj4MqtjwRVE
+
+### 5. LISTAR PRESTADORES (SEM TOKEN - deve funcionar se na SecurityConfig estiver público)
+GET {{baseUrl}}/api/prestadores
+
+### 6. CRIAR SERVIÇO (COM TOKEN)
+# @name criarServico
+POST {{baseUrl}}/api/servicos
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJub21lIjoiQ2FybG9zIEFsbWVpZGEiLCJpZCI6MTksImVtYWlsIjoiY2FybGFvQGVtYWlsLmNvbSIsInN1YiI6ImNhcmxhb0BlbWFpbC5jb20iLCJpYXQiOjE3Njk1Mjk5NDQsImV4cCI6MTc2OTYxNjM0NH0.Tj0zc5BGBDezp2F4Vsl7cwADKcBm0838Wj4MqtjwRVE
+Content-Type: application/json
+
+{
+  "cliente": "Carlos Almeida",
+  "prestadorId": 19,
+  "clienteNome": "Carlos Almeida",
+"dataAgendamento": "2026-02-15T14:00:00",
+  "telefoneCliente": "(11) 80999-9999",
+  "endereco": "Av. Paulista, 1000, São Paulo - SP",
+  "tipoServico": "Instalação Elétrica",
+  "valor": 350.50,
+  "observacoes": "Trazer material completo"
+}
+
+### 7. PEGAR ID DO SERVIÇO CRIADO
+@servicoId = 16
+
+### 8. BUSCAR SERVIÇO ESPECÍFICO
+GET {{baseUrl}}/api/servicos/16
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJub21lIjoiQ2FybG9zIEFsbWVpZGEiLCJpZCI6MTksImVtYWlsIjoiY2FybGFvQGVtYWlsLmNvbSIsInN1YiI6ImNhcmxhb0BlbWFpbC5jb20iLCJpYXQiOjE3Njk1Mjk5NDQsImV4cCI6MTc2OTYxNjM0NH0.Tj0zc5BGBDezp2F4Vsl7cwADKcBm0838Wj4MqtjwRVE
+
+### 9. LISTAR SERVIÇOS POR PRESTADOR
+GET {{baseUrl}}/api/servicos/prestador/19
+
+### 10. ATUALIZAR STATUS
+PATCH {{baseUrl}}/api/servicos/16/status?status=CONCLUIDO
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJub21lIjoiQ2FybG9zIEFsbWVpZGEiLCJpZCI6MTksImVtYWlsIjoiY2FybGFvQGVtYWlsLmNvbSIsInN1YiI6ImNhcmxhb0BlbWFpbC5jb20iLCJpYXQiOjE3Njk1Mjk5NDQsImV4cCI6MTc2OTYxNjM0NH0.Tj0zc5BGBDezp2F4Vsl7cwADKcBm0838Wj4MqtjwRVE
+
+### 11. DASHBOARD DO MÊS
+GET {{baseUrl}}/api/servicos/dashboard/mes/2
+
+### 12. RECUPERAÇÃO DE SENHA (teste básico)
+POST {{baseUrl}}/api/recuperacao-senha/solicitar
+Content-Type: application/json
+
+{
+  "email": "carlao@email.com"
+}
+
+# 1. Cadastre com email REAL
+POST http://localhost:8082/api/auth/registrar
+Content-Type: application/json
+
+{
+  "nomeCompleto": "Teste Email Real",
+  "email": "paulovitorms04@gmail.com",
+  "senha": "Senha123",
+  "telefone": "(37)99182-0090",
+  "cpfCnpj": "111.333.444-44"
+}
+
+# 2. Depois teste recuperação
+POST http://localhost:8082/api/recuperacao-senha/solicitar
+Content-Type: application/json
+
+{
+  "email": "seuemail@gmail.com"  # ← Mesmo email
+}

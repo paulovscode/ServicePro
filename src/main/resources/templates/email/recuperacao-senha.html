@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Recuperação de Senha</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { background: #2c3e50; color: white; padding: 20px; text-align: center; }
+        .content { background: #f9f9f9; padding: 30px; border-radius: 5px; }
+        .button {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        .footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #777;
+            font-size: 12px;
+        }
+        .token {
+            background: #eee;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: monospace;
+            word-break: break-all;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>ServicePro</h1>
+            <p>Sistema de Agendamento</p>
+        </div>
+        
+        <div class="content">
+            <h2>Olá, <span th:text="${nome}">Usuário</span>!</h2>
+            
+            <p>Recebemos uma solicitação para redefinir a senha da sua conta no ServicePro.</p>
+            
+            <p>Para redefinir sua senha, clique no botão abaixo:</p>
+            
+            <a th:href="${linkRecuperacao}" class="button">
+                Redefinir Senha
+            </a>
+            
+            <p>Ou use este código de recuperação:</p>
+            <div class="token" th:text="${token}">TOKEN_AQUI</div>
+            
+            <p>Este link é válido por 24 horas. Se você não solicitou esta recuperação, ignore este email.</p>
+            
+            <p><strong>Dica de segurança:</strong> Nunca compartilhe sua senha ou este código com ninguém.</p>
+        </div>
+        
+        <div class="footer">
+            <p>Este é um email automático, por favor não responda.</p>
+            <p>© 2024 ServicePro. Todos os direitos reservados.</p>
+        </div>
+    </div>
+</body>
+</html>

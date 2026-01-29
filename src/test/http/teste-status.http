@@ -1,0 +1,57 @@
+@baseUrl = http://localhost:8082
+@prestadorId = 1
+
+GET {{baseUrl}}/api/servicos
+
+### 1. Criar 3 serviços
+POST {{baseUrl}}/api/servicos
+Content-Type: application/json
+
+{
+    "clienteNome": "Cliente A",
+    "endereco": "Rua A",
+    "dataAgendamento": "2026-01-24T09:00:00",
+    "valor": 100.00,
+    "prestadorId": 8
+}
+
+###
+POST {{baseUrl}}/api/servicos
+Content-Type: application/json
+
+{
+    "clienteNome": "Cliente B",
+    "endereco": "Rua B",
+    "dataAgendamento": "2026-01-24T11:00:00",
+    "valor": 200.00,
+    "prestadorId": 9
+}
+
+###
+POST {{baseUrl}}/api/servicos
+Content-Type: application/json
+
+{
+    "clienteNome": "Cliente C",
+    "endereco": "Rua C",
+    "dataAgendamento": "2026-01-24T14:00:00",
+    "valor": 300.00,
+    "prestadorId": 10
+}
+
+### 2. Pegar IDs (olhe nas respostas)
+### Exemplo: primeiro serviço ID 12, segundo ID 13, terceiro ID 14
+
+### 3. Mudar status dos 3 serviços
+PATCH {{baseUrl}}/api/servicos/11/status?status=CONCLUIDO
+
+###
+PATCH {{baseUrl}}/api/servicos/12/status?status=EM_ANDAMENTO
+
+###
+PATCH {{baseUrl}}/api/servicos/10/status?status=AGENDADO
+### (ou não faça nada, já está AGENDADO)
+
+### 4. FINALMENTE: Testar dashboard
+GET {{baseUrl}}/api/servicos/dashboard/mes/10
+

@@ -1,0 +1,137 @@
+### Base URL
+@baseUrl = http://localhost:8082
+
+### 1. TESTE DE STATUS DA API
+GET {{baseUrl}}/status
+
+
+### 2. CADASTRAR PRESTADOR (CREATE)
+POST {{baseUrl}}/api/prestadores/cadastrar
+Content-Type: application/json
+
+{
+    "nomeCompleto": "João Silva",
+    "cpfCnpj": "123.456.789-00",
+    "email": "joao@email.com",
+    "telefone": "(11) 99999-9999",
+    "senha": "senha123"
+}
+
+### 2. CADASTRAR PRESTADOR (CREATE) - TESTE LOCAL
+POST {{baseUrl}}/api/prestadores/cadastrar
+Content-Type: application/json
+
+{
+    "nomeCompleto": "João Prestador",
+    "cpfCnpj": "123.453.789-00",
+    "email": "joao@prestador.com",
+    "telefone": "(11) 99989-9999",
+    "senha": "senha125"
+}
+
+### 2. Pegar o ID (na resposta)
+# A resposta será algo como:
+# {"id": 1, "nomeCompleto": "João Prestador", ...}
+# Anote o ID retornado
+
+### 3. CADASTRAR SEGUNDO PRESTADOR
+POST {{baseUrl}}/api/prestadores/cadastrar
+Content-Type: application/json
+
+{
+    "nomeCompleto": "Maria Santos",
+    "cpfCnpj": "987.654.321-00",
+    "email": "maria@email.com",
+    "telefone": "(11) 98888-8888",
+    "senha": "senha456"
+}
+
+
+### 4. LISTAR TODOS PRESTADORES (READ ALL)
+GET {{baseUrl}}/api/prestadores
+
+### 5. BUSCAR PRESTADOR POR ID (READ ONE)
+GET {{baseUrl}}/api/prestadores/15
+
+### 6. ATUALIZAR PRESTADOR (UPDATE)
+PUT {{baseUrl}}/api/prestadores/1
+Content-Type: application/json
+
+{
+    "nomeCompleto": "João Silva Atualizado",
+    "cpfCnpj": "123.456.789-00",
+    "email": "joao.novo@email.com",
+    "telefone": "(11) 97777-7777",
+    "senha": "novaSenha123"
+}
+
+### 2. CADASTRAR PRESTADOR (CREATE) - COM DADOS NOVOS
+POST http://localhost:8082/api/prestadores/cadastrar
+Content-Type: application/json
+
+{
+    "nomeCompleto": "Carlos Oliveira",
+    "cpfCnpj": "111.222.333-44",
+    "email": "carlos@email.com",
+    "telefone": "(11) 95555-5555",
+    "senha": "senha789"
+}
+
+
+### 7. LOGIN COM EMAIL
+POST {{baseUrl}}/api/prestadores/login?email=paulovitorms04@gmail.com&senha=NovaSenha123
+
+### 8. LOGIN COM TELEFONE
+POST {{baseUrl}}/api/prestadores/login?telefone=(11) 99999-9999&senha=senha123
+
+### 9. DESATIVAR PRESTADOR (DELETE LÓGICO)
+DELETE {{baseUrl}}/api/prestadores/14
+
+### 10. LISTAR NOVAMENTE (para ver se desativou)
+GET {{baseUrl}}/api/prestadores
+
+### 1. Criar serviço AGENDADO (substitua {ID} pelo ID real)
+POST http://localhost:8082/api/servicos
+Content-Type: application/json
+
+{
+    "clienteNome": "Cliente 1",
+    "clienteTelefone": "(11) 91111-1111",
+    "endereco": "Rua A, 100",
+    "dataAgendamento": "2026-01-25T10:00:00",
+    "valor": 150.00,
+    "prestadorId": 8
+}
+
+### 2. Criar serviço EM ANDAMENTO
+POST http://localhost:8082/api/servicos
+Content-Type: application/json
+
+{
+    "clienteNome": "João Silva",
+    "clienteTelefone": "(11) 99999-9999",
+    "endereco": "Rua B, 200",
+    "dataAgendamento": "2026-01-23T18:16:00",
+    "valor": 200.50,
+    "prestadorId": 8
+}
+
+### 3. Criar serviço CONCLUÍDO
+POST http://localhost:8082/api/servicos
+Content-Type: application/json
+
+{
+    "clienteNome": "Cliente 3",
+    "clienteTelefone": "(11) 93333-3333",
+    "endereco": "Rua C, 300",
+    "dataAgendamento": "2026-01-20T09:00:00",
+    "valor": 300.00,
+    "prestadorId": 10
+}
+
+### 4. Atualizar um serviço para CONCLUIDO
+PATCH http://localhost:8082/api/servicos/9/status?status=CONCLUIDO
+
+
+
+

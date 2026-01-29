@@ -1,0 +1,27 @@
+@baseUrl = http://localhost:8082
+
+### 1. Teste básico
+GET {{baseUrl}}/api/servicos/teste
+
+### 2. Teste se PDF endpoint está configurado
+GET {{baseUrl}}/api/servicos/10/comprovante-teste
+
+### 3. Crie um serviço para testar
+POST {{baseUrl}}/api/servicos
+Content-Type: application/json
+
+{
+    "clienteNome": "Cliente PDF Teste",
+    "endereco": "Rua PDF, 123",
+    "dataAgendamento": "2026-01-26T10:00:00",
+    "valor": 777.77,
+    "prestadorId": 1
+}
+
+### ⭐ ANOTE O ID retornado (ex: 20)
+
+### 4. Teste PDF com ID REAL
+GET {{baseUrl}}/api/servicos/20/comprovante
+
+### 5. Teste dashboard
+GET {{baseUrl}}/api/servicos/dashboard/mes/1

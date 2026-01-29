@@ -1,0 +1,45 @@
+
+### 1. CRIAR USUÁRIO (se já não tem)
+POST http://localhost:8082/api/auth/registrar
+Content-Type: application/json
+
+{
+  "nomeCompleto": "Teste Definitivo",
+  "email": "definitivo.test@gmail.com",
+  "senha": "SenhaAntiga123",
+  "telefone": "(17) 93333-3333",
+  "cpfCnpj": "255.666.777-88"
+}
+
+### 2. LOGIN COM SENHA ANTIGA (confirmar)
+POST http://localhost:8082/api/prestadores/login?email=definitivo.test@gmail.com&senha=SenhaAntiga123
+
+### 3. SOLICITAR RECUPERAÇÃO
+POST http://localhost:8082/api/recuperacao-senha/solicitar
+Content-Type: application/json
+
+{
+  "email": "definitivo.test@gmail.com"
+}
+
+### 4. OLHE NO CONSOLE E COLE O TOKEN AQUI:
+### Você verá no terminal: "Token: abc123def456..."
+
+### 5. USAR O NOVO ENDPOINT DEFINITIVO
+POST http://localhost:8082/api/recuperacao-senha/resetar-definitivo
+Content-Type: application/json
+
+{
+  "token": "0c9bf9bb59314cc38ba03f853f24286f",
+  "novaSenha": "NovaSenhaDefinitiva123",
+  "confirmacaoSenha": "NovaSenhaDefinitiva123"
+}
+
+### 6. VER OS LOGS NO CONSOLE (IMPORTANTE!)
+### Copie TUDO que aparecer no terminal
+
+### 7. LOGIN COM NOVA SENHA
+POST http://localhost:8082/api/prestadores/login?email=definitivo.test@gmail.com&senha=NovaSenhaDefinitiva123
+
+### 8. LOGIN COM SENHA ANTIGA (deve falhar)
+POST http://localhost:8082/api/prestadores/login?email=definitivo.test@gmail.com&senha=SenhaAntiga123

@@ -1,0 +1,32 @@
+@baseUrl = http://localhost:8082
+@prestadorId = 1
+
+### 1. Teste se controller está funcionando
+GET {{baseUrl}}/api/servicos/teste
+
+### 2. Teste endpoint de PDF (use ID de serviço existente)
+GET {{baseUrl}}/api/servicos/teste-pdf/15
+
+### 3. Se não tiver serviços, crie um
+POST {{baseUrl}}/api/servicos
+Content-Type: application/json
+
+{
+    "clienteNome": "Cliente para PDF",
+    "endereco": "Rua do PDF, 456",
+    "dataAgendamento": "2026-01-27T14:00:00",
+    "valor": 888.88,
+    "prestadorId": {{prestadorId}}
+}
+
+### ⭐ ANOTE O ID retornado (ex: 25) ⭐
+
+### 4. Teste o novo endpoint com ID REAL
+GET {{baseUrl}}/api/servicos/teste-pdf/25
+
+### 5. AGORA teste o endpoint REAL do PDF
+GET {{baseUrl}}/api/servicos/25/comprovante
+
+### 6. Teste dashboard para verificar dados
+GET {{baseUrl}}/api/servicos/dashboard/mes/{{prestadorId}}
+
